@@ -40,8 +40,19 @@ def index():
         
     # Load Tasks
     else:
-        tasks = Tasks.query.order_by(Tasks.created).all()
+        tasks = Tasks.query.order_by(Tasks.created.desc()).all()
         return render_template("index.html", tasks=tasks)
+
+@app.route("/delete/<int:id>")
+def delete(id: int):
+    print("TEst")
+    delete_task = Tasks.query.get_or_404(id)
+    try:
+        db.session.delete(delete_task)
+        db.session.commit()
+        return redirect("/")
+    except Exception as e:
+        return f"ERROR:{e}"
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)

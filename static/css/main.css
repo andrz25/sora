@@ -9,7 +9,7 @@ body {
 }
 
 /* Nav */
-.material-icons {
+.navbar i {
   font-size: 1.8rem;
   color: gray;
   cursor: pointer;
@@ -17,7 +17,21 @@ body {
      -moz-user-select: none;
           user-select: none;
 }
+.navbar i:hover {
+  animation: jump 0.2s ease-in-out 1 forwards;
+}
 
+@keyframes jump {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(0, -0.5rem);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
 .navbar {
   padding: 0 1rem;
   display: flex;
@@ -81,6 +95,7 @@ body {
   width: 30%;
   border: none;
   border-radius: 0 1rem 1rem 0;
+  transition: background-color 0.3s ease;
   cursor: pointer;
 }
 .main-container .tasks-section .task-input-field #submit-task:hover {
@@ -94,23 +109,70 @@ body {
   }
 }
 .main-container .tasks-section .task-list {
+  margin: 1rem 0;
+  height: 50%;
   display: flex;
   padding: 0;
-  list-style-type: none;
   flex-direction: column;
+  overflow: auto;
+  padding-right: 0.5rem;
 }
 .main-container .tasks-section .task-list .task {
   color: white;
+  min-height: 3rem;
   height: 3rem;
   background-color: #1982C4;
   border-radius: 2rem;
   margin-bottom: 1rem;
-  padding: 0rem 1.5rem;
-  border-color: 1px solid red;
+  padding: 0rem 0.8rem 0 1.5rem;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
-.main-container .tasks-section .task-list .task:hover {
-  background-color: #4DA167;
+.main-container .tasks-section .task-list .task .task-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 1rem;
+  flex-grow: 1;
+  white-space: nowrap;
+}
+.main-container .tasks-section .task-list .task i {
+  transition: background-color 0.3s ease;
+  border-radius: 50%;
+  color: white;
   cursor: pointer;
+}
+.main-container .tasks-section .task-list .task i:hover {
+  background-color: red;
+}
+.main-container .tasks-section .task-list::-webkit-scrollbar {
+  width: 0.5rem;
+  background-color: #242424;
+}
+.main-container .tasks-section .task-list::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 1rem;
+}
+.main-container .tasks-section .study-timer {
+  border-radius: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.main-container .tasks-section .study-timer .timer {
+  display: flex;
+  font-size: 8rem;
+  font-weight: bold;
+  color: gray;
+  justify-content: space-around;
+  align-items: center;
+  height: 80%;
+}
+.main-container .tasks-section .study-timer .controls {
+  display: flex;
+  justify-content: space-around;
+}
+.main-container .tasks-section .study-timer .controls i {
+  color: gray;
+  font-size: 3rem;
 }/*# sourceMappingURL=main.css.map */

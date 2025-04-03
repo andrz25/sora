@@ -20,11 +20,21 @@ body {
 
 /* Nav */
 
-.material-icons {
+.navbar i {
     font-size: 1.8rem;
     color: $icon-colors;
     cursor: pointer;
     user-select: none;
+
+    &:hover {
+        animation: jump 0.2s ease-in-out 1 forwards;
+    }
+}
+
+@keyframes jump {
+    0% { transform: translate(0); }
+    50% { transform: translate(0, -0.5rem); }
+    100% { transform: translate(0); }
 }
 
 .navbar {
@@ -66,6 +76,8 @@ body {
             display: flex;
             justify-content: space-between;
 
+            
+
             @media (max-width: $tablet) {
                 flex-wrap: wrap;
             }
@@ -91,6 +103,7 @@ body {
                 width: 30%;
                 border: none; 
                 border-radius: 0 1rem 1rem 0;
+                transition: background-color 0.3s ease;
                 cursor: pointer;
 
                 &:hover {
@@ -106,30 +119,84 @@ body {
         }
 
         .task-list {
+            margin: 1rem 0;
+            height: 50%;
             display: flex;
             padding: 0;
-            list-style-type: none;
             flex-direction: column;
+            overflow: auto;
+            padding-right: 0.5rem;
 
             .task {
             color: white;
+            min-height: 3rem;
             height: 3rem;
             background-color: $third-color;
             border-radius: 2rem;
             margin-bottom: 1rem;
-            padding: 0rem 1.5rem;
-            border-color: 1px solid red;
+            padding: 0rem 0.8rem 0 1.5rem;
 
             display: flex;
+            justify-content: space-between;
             align-items: center;
 
-            &:hover {
-                background-color: #4DA167;
-                cursor: pointer;
+                .task-text {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    margin-right: 1rem;
+                    flex-grow: 1;
+                    white-space: nowrap;
+                }
+
+                i {
+                    transition: background-color 0.3s ease; 
+                    border-radius: 50%;
+                    color: white;
+                    cursor: pointer; 
+                    &:hover {
+                        background-color: red;
+                    }
+                }
             }
+
+            &::-webkit-scrollbar {
+                width: 0.5rem;
+                background-color: #242424;
+                
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $icon-colors;
+                border-radius: 1rem;
             }
         }
-        
+
+        .study-timer {
+            border-radius: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
+            .timer {
+                display: flex;
+                font-size: 8rem;
+                font-weight: bold;
+                color: $icon-colors;
+                justify-content: space-around;
+                align-items: center;
+                height: 80%;
+            }
+
+            .controls {
+                display: flex;
+                justify-content: space-around;
+
+                i {
+                    color: $icon-colors;
+                    font-size: 3rem;
+                }
+            }
+        }
     }
 }
 

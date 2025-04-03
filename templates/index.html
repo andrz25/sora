@@ -20,24 +20,30 @@
     </div>
     <div class="tasks-section">
         <form class="task-input-field" method="POST">
-            <input type="text" id="task-input" name="task-input" placeholder="Add task here..">
-            <button type="submit" id="submit-task">ADD</button>
+            <input type="text" id="task-input" name="task-input" placeholder="Add task here.." required>
+            <button type="submit" id="submit-task"><i class="material-icons">add</i></button>
         </form>
-        <ul class="task-list" val>
+        <div class="task-list" val>
             {% for task in tasks %}
-            <li class="task">{{task.content}}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
+            <div class="task">
+                <div class="task-text">{{task.content}}</div>
+                
+                <a href="/delete/{{task.id}}">
+                    <i class="material-icons">close</i>
+                </a>
 
-<!-- Edit Task -->
-<div class="task-editor">
-    <h2>Edit Task</h2>
-    <form>
-        <input type="text" id="updated-text" name="updated-text">
-        <button>Delete</button>
-    </form>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="study-timer">
+            <div class="timer"><p>00:00</p></div>
+            <div class="controls">
+                <button><i class="material-icons">history</i></button>
+                <button><i class="material-icons">timer</i></button>
+                <button><i class="material-icons">stop</i></button>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
