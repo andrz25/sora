@@ -120,6 +120,7 @@ body {
 
         .task-list {
             margin: 1rem 0;
+            min-height: 50%;
             height: 50%;
             display: flex;
             padding: 0;
@@ -172,10 +173,11 @@ body {
         }
 
         .study-timer {
-            border-radius: 1rem;
-            flex-grow: 1;
+            max-height: 20rem;
+
             display: flex;
             flex-direction: column;
+            
 
             .timer {
                 display: flex;
@@ -185,15 +187,28 @@ body {
                 justify-content: space-around;
                 align-items: center;
                 height: 80%;
+
+                p {
+                    font-size: 7vw;
+                }
             }
 
             .controls {
+
                 display: flex;
-                justify-content: space-around;
+                flex-grow: 1;
+                button {
+                    width: 33.3%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: none;
+                    border: none;
+                }
 
                 i {
                     color: $icon-colors;
-                    font-size: 3rem;
+                    font-size: 3vw;
                 }
             }
         }
