@@ -1,70 +1,116 @@
 body {
-    margin: 0;
-    padding: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    overflow: hidden;
-
-    background-color: #242424;
+  font-family: "Roboto";
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: #242424;
 }
 
-/* Nav*/
+/* Nav */
 .material-icons {
-    font-size: 1.8rem;
-    color: gray;     /* Set color to white */
-    cursor: pointer;
-    user-select: none;
-}
-
-
-.nav-element-left > i {
-    margin-left: 1rem;
-}
-
-.nav-element-right > i {
-    margin-right: 1rem;
+  font-size: 1.8rem;
+  color: gray;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .navbar {
-    padding: 0 1rem;
-    display: flex;
-    height: 10vh;
-    align-items: center;
-    justify-content: space-between;
+  padding: 0 1rem;
+  display: flex;
+  height: 10vh;
+  align-items: center;
+  justify-content: space-between;
 }
-
+.navbar .nav-element-left > i {
+  margin-left: 1rem;
+}
+.navbar .nav-element-right > i {
+  margin-right: 1rem;
+}
 
 /* Main Content */
-
 .main-container {
-    display: flex;
-    height: calc(100vh - 10vh);
+  display: flex;
+  height: 90vh;
 }
-
-.calendar {
-    margin: 0 1rem 1rem 1rem;
-    width: 75%;
-    border-radius: 1rem;
-
-    /* Colors */
-    background-color:#171717;
-
-    box-shadow: -0.05rem 0.05rem white;
+.main-container .calendar {
+  margin: 0 1rem 1rem 1rem;
+  width: 75%;
+  border-radius: 1rem;
+  background-color: #171717;
+  box-shadow: -0.2rem 0.2rem rgba(255, 255, 255, 0.2);
 }
-
-.tasks-section {
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    margin: 0 1rem 1rem 0;
+.main-container .tasks-section {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem 1rem 0;
 }
-
-.task {
-    height: 2rem;
-    min-height: 2rem;
-    background-color: blue;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
+.main-container .tasks-section .task-input-field {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
 }
+@media (max-width: 768px) {
+  .main-container .tasks-section .task-input-field {
+    flex-wrap: wrap;
+  }
+}
+.main-container .tasks-section .task-input-field #task-input {
+  background-color: #171717;
+  padding: 1rem;
+  flex-grow: 1;
+  width: 100%;
+  border: none;
+  border-radius: 1rem 0 0 1rem;
+  outline: none;
+  color: white;
+}
+@media (max-width: 768px) {
+  .main-container .tasks-section .task-input-field #task-input {
+    border-radius: 1rem 1rem 0 0;
+  }
+}
+.main-container .tasks-section .task-input-field #submit-task {
+  color: white;
+  background-color: #1982C4;
+  width: 30%;
+  border: none;
+  border-radius: 0 1rem 1rem 0;
+  cursor: pointer;
+}
+.main-container .tasks-section .task-input-field #submit-task:hover {
+  background-color: #4DA167;
+}
+@media (max-width: 768px) {
+  .main-container .tasks-section .task-input-field #submit-task {
+    border-radius: 0 0 1rem 1rem;
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
+.main-container .tasks-section .task-list {
+  display: flex;
+  padding: 0;
+  list-style-type: none;
+  flex-direction: column;
+}
+.main-container .tasks-section .task-list .task {
+  color: white;
+  height: 3rem;
+  background-color: #1982C4;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  padding: 0rem 1.5rem;
+  border-color: 1px solid red;
+  display: flex;
+  align-items: center;
+}
+.main-container .tasks-section .task-list .task:hover {
+  background-color: #4DA167;
+  cursor: pointer;
+}/*# sourceMappingURL=main.css.map */

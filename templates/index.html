@@ -1,37 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+{% block head %}
+<title>Sora</title>
+{% endblock %}
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    
-
-    <title>Sora</title>
-</head>
-<body>
-    <div class="navbar">
-        <div class="nav-element-left">
-            <i class="material-icons">timer</i>
-        </div>
-        <div class="nav-element-right">
-            <i class="material-icons">menu</i>
-            <i class="material-icons">account_circle</i>
-        </div>
+{% block body %}
+<div class="navbar">
+    <div class="nav-element-left">
+        <i class="material-icons">timer</i>
     </div>
-    <div class="main-container"> 
-        <div class="calendar">
-
-        </div>
-        <div class="tasks-section">
-            <div class="task">
-
-            </div>
-            <div class="task">
-
-            </div>
-        </div>
+    <div class="nav-element-right">
+        <i class="material-icons">menu</i>
+        <i class="material-icons">account_circle</i>
     </div>
-</body>
-</html>
+</div>
+<!-- Main -->
+<div class="main-container"> 
+    <div class="calendar">
+
+    </div>
+    <div class="tasks-section">
+        <form class="task-input-field" method="POST">
+            <input type="text" id="task-input" name="task-input" placeholder="Add task here..">
+            <button type="submit" id="submit-task">ADD</button>
+        </form>
+        <ul class="task-list" val>
+            {% for task in tasks %}
+            <li class="task">{{task.content}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<!-- Edit Task -->
+<div class="task-editor">
+    <h2>Edit Task</h2>
+    <form>
+        <input type="text" id="updated-text" name="updated-text">
+        <button>Delete</button>
+    </form>
+</div>
+
+{% endblock %}

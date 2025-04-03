@@ -1,0 +1,139 @@
+$primary-color: #242424;
+$secondary-color: #171717;
+$third-color: #1982C4;
+$confirm-hover-color: #4DA167;
+$icon-colors: gray;
+
+$tablet: 768px;
+
+$main-font: 'Roboto', sans;
+
+body {
+    font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-color: $primary-color;
+}
+
+/* Nav */
+
+.material-icons {
+    font-size: 1.8rem;
+    color: $icon-colors;
+    cursor: pointer;
+    user-select: none;
+}
+
+.navbar {
+    padding: 0 1rem;
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav-element-left > i {
+        margin-left: 1rem;
+    }
+
+    .nav-element-right > i {
+        margin-right: 1rem;
+    }
+}
+
+/* Main Content */
+.main-container {
+    display: flex;
+    height: calc(100vh - 10vh);
+
+    .calendar {
+        margin: 0 1rem 1rem 1rem;
+        width: 75%;
+        border-radius: 1rem;
+        background-color: $secondary-color;
+        box-shadow: -0.2rem 0.2rem rgba(255, 255, 255, 0.2);
+    }
+    .tasks-section {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 1rem 1rem 0;
+
+        .task-input-field {
+            width: auto;
+            display: flex;
+            justify-content: space-between;
+
+            @media (max-width: $tablet) {
+                flex-wrap: wrap;
+            }
+
+            #task-input {
+                background-color: $secondary-color;
+                padding: 1rem;
+                flex-grow: 1;
+                width: 100%;
+                border: none;
+                border-radius: 1rem 0 0 1rem;
+                outline: none;
+                color: white;
+                
+                @media (max-width: $tablet) {
+                    border-radius: 1rem 1rem 0 0;
+                }
+            }
+
+            #submit-task {
+                color: white;
+                background-color: $third-color;
+                width: 30%;
+                border: none; 
+                border-radius: 0 1rem 1rem 0;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $confirm-hover-color;
+                }
+
+                @media (max-width: $tablet) {
+                    border-radius: 0 0 1rem 1rem;
+                    width: 100%;
+                    padding: 0.5rem;
+                }
+            }
+        }
+
+        .task-list {
+            display: flex;
+            padding: 0;
+            list-style-type: none;
+            flex-direction: column;
+
+            .task {
+            color: white;
+            height: 3rem;
+            background-color: $third-color;
+            border-radius: 2rem;
+            margin-bottom: 1rem;
+            padding: 0rem 1.5rem;
+            border-color: 1px solid red;
+
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                background-color: #4DA167;
+                cursor: pointer;
+            }
+            }
+        }
+        
+    }
+}
+
+
+
+
+
