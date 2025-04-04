@@ -51,8 +51,9 @@ body {
   display: flex;
   height: 90vh;
 }
-.main-container .calendar {
+.main-container #calendar {
   margin: 0 1rem 1rem 1rem;
+  padding: 1rem;
   width: 75%;
   border-radius: 1rem;
   background-color: #171717;
@@ -68,13 +69,17 @@ body {
   width: auto;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 @media (max-width: 768px) {
   .main-container .tasks-section .task-input-field {
     flex-wrap: wrap;
   }
 }
-.main-container .tasks-section .task-input-field #task-input {
+.main-container .tasks-section .task-input-field .input-submit {
+  display: flex;
+}
+.main-container .tasks-section .task-input-field .input-submit #task-input {
   background-color: #171717;
   padding: 1rem;
   flex-grow: 1;
@@ -85,11 +90,11 @@ body {
   color: white;
 }
 @media (max-width: 768px) {
-  .main-container .tasks-section .task-input-field #task-input {
+  .main-container .tasks-section .task-input-field .input-submit #task-input {
     border-radius: 1rem 1rem 0 0;
   }
 }
-.main-container .tasks-section .task-input-field #submit-task {
+.main-container .tasks-section .task-input-field .input-submit #submit-task {
   color: white;
   background-color: #1982C4;
   width: 30%;
@@ -98,15 +103,25 @@ body {
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
-.main-container .tasks-section .task-input-field #submit-task:hover {
+.main-container .tasks-section .task-input-field .input-submit #submit-task:hover {
   background-color: #4DA167;
 }
 @media (max-width: 768px) {
-  .main-container .tasks-section .task-input-field #submit-task {
+  .main-container .tasks-section .task-input-field .input-submit #submit-task {
     border-radius: 0 0 1rem 1rem;
     width: 100%;
     padding: 0.5rem;
   }
+}
+.main-container .tasks-section .task-input-field #date-input {
+  margin-top: 0.7rem;
+  background-color: #171717;
+  border: none;
+  color: gray;
+  border-radius: 2rem;
+}
+.main-container .tasks-section .task-input-field #date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 .main-container .tasks-section .task-list {
   margin: 1rem 0;
@@ -171,7 +186,6 @@ body {
 }
 .main-container .tasks-section .study-timer .timer span {
   font-size: 7vw;
-  background-color: blue;
 }
 .main-container .tasks-section .study-timer .controls {
   display: flex;
@@ -185,14 +199,36 @@ body {
   background: none;
   border: none;
 }
+@keyframes shrink {
+  0% {
+    font-size: 4vw;
+  }
+  50% {
+    font-size: 3vw;
+  }
+  100% {
+    font-size: 4vw;
+  }
+}
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .main-container .tasks-section .study-timer .controls i {
-  transition: background-color 0.3s ease;
   color: gray;
   font-size: 4vw;
 }
 .main-container .tasks-section .study-timer .controls i:hover {
+  cursor: pointer;
   color: #1982C4;
 }
 .main-container .tasks-section .study-timer .controls i:active {
-  color: red;
+  animation: shrink 0.1s ease-in-out;
 }/*# sourceMappingURL=main.css.map */

@@ -37,7 +37,7 @@ function startTimer(duration, display) {
         }
 
         
-    }, 1);
+    }, 1000);
 }
 
 window.onload = function () {

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -15,11 +15,19 @@ db = SQLAlchemy(app)
 class Tasks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(100), nullable=False)
-    complete = db.Column(db.Integer)
+    taskDate = db.Column(db.String(), nullable=False)
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self) -> str:
         return f"Task {self.id}"
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'content': self.content,
+            'taskDate': self.taskDate,
+            'created': self.created.isoformat()
+        }
     
 with app.app_context():
     db.create_all()
@@ -29,7 +37,8 @@ def index():
     # Adding Tasks
     if request.method == "POST":
         current_task = request.form["task-input"]
-        newTask = Tasks(content=current_task)
+        date = request.form["date-input"]
+        newTask = Tasks(content=current_task, taskDate=date)
         try:
             db.session.add(newTask)
             db.session.commit()
@@ -37,7 +46,6 @@ def index():
         except Exception as e:
             print(f"ERROR:{e}")
             return f"ERROR:{e}"
-        
     # Load Tasks
     else:
         tasks = Tasks.query.order_by(Tasks.created.desc()).all()
@@ -53,6 +61,11 @@ def delete(id: int):
         return redirect("/")
     except Exception as e:
         return f"ERROR:{e}"
+
+@app.route("/tasks")
+def getTasks():
+    tasks = Tasks.query.order_by(Tasks.created.desc()).all()
+    return jsonify([task.to_dict() for task in tasks])
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)

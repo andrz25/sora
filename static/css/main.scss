@@ -58,8 +58,9 @@ body {
     display: flex;
     height: calc(100vh - 10vh);
 
-    .calendar {
+    #calendar {
         margin: 0 1rem 1rem 1rem;
+        padding: 1rem;
         width: 75%;
         border-radius: 1rem;
         background-color: $secondary-color;
@@ -75,47 +76,65 @@ body {
             width: auto;
             display: flex;
             justify-content: space-between;
-
-            
+            flex-direction: column;
 
             @media (max-width: $tablet) {
                 flex-wrap: wrap;
             }
 
-            #task-input {
-                background-color: $secondary-color;
-                padding: 1rem;
-                flex-grow: 1;
-                width: 100%;
-                border: none;
-                border-radius: 1rem 0 0 1rem;
-                outline: none;
-                color: white;
-                
-                @media (max-width: $tablet) {
-                    border-radius: 1rem 1rem 0 0;
-                }
-            }
+            .input-submit {
+                display: flex;
 
-            #submit-task {
-                color: white;
-                background-color: $third-color;
-                width: 30%;
-                border: none; 
-                border-radius: 0 1rem 1rem 0;
-                transition: background-color 0.3s ease;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: $confirm-hover-color;
-                }
-
-                @media (max-width: $tablet) {
-                    border-radius: 0 0 1rem 1rem;
+                #task-input {
+                    background-color: $secondary-color;
+                    padding: 1rem;
+                    flex-grow: 1;
                     width: 100%;
-                    padding: 0.5rem;
+                    border: none;
+                    border-radius: 1rem 0 0 1rem;
+                    outline: none;
+                    color: white;
+                    
+                    @media (max-width: $tablet) {
+                        border-radius: 1rem 1rem 0 0;
+                    }
+                }
+                
+                #submit-task {
+                    color: white;
+                    background-color: $third-color;
+                    width: 30%;
+                    border: none; 
+                    border-radius: 0 1rem 1rem 0;
+                    transition: background-color 0.3s ease;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: $confirm-hover-color;
+                    }
+
+                    @media (max-width: $tablet) {
+                        border-radius: 0 0 1rem 1rem;
+                        width: 100%;
+                        padding: 0.5rem;
+                    }
                 }
             }
+
+
+
+            #date-input {
+                margin-top: 0.7rem;
+                background-color: $secondary-color;
+                border: none;
+                color: gray;
+                border-radius: 2rem;
+
+                &::-webkit-calendar-picker-indicator {
+                    filter: invert(1);
+                }
+            }
+            
         }
 
         .task-list {
@@ -192,7 +211,6 @@ body {
 
                 span {
                     font-size: 7vw;
-                    background-color: blue;
                 }
             }
 
@@ -208,24 +226,41 @@ body {
                     border: none;
                 }
 
-                i {
-                    transition: background-color 0.3s ease;
-                    color: $icon-colors;
-                    font-size: 4vw;
-
-                    &:hover {
-                        color: $third-color
+                @keyframes shrink {
+                    0% {
+                      font-size: 4vw;
                     }
-
-                    &:active {
-                        color: red;
+                    50% {
+                      font-size: 3vw;
+                    }
+                    100% {
+                      font-size: 4vw;
                     }
                 }
+                  
+                @keyframes shrink {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(0.8); }
+                    100% { transform: scale(1); }
+                }
+
+                i {
+                    color: $icon-colors;
+                    font-size: 4vw;
+                  
+                    &:hover {
+                      cursor: pointer;
+                      color: $third-color;
+                    }
+                  
+                    &:active {
+                      animation: shrink 0.1s ease-in-out;
+                    }
+                  }
             }
         }
     }
 }
-
 
 
 
