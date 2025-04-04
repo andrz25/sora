@@ -1,0 +1,21 @@
+body {
+  background-color: #F8F8F8;
+}
+
+#theme-mode {
+  color: gray;
+}
+
+#calendar {
+  background-color: #E4E6E8;
+  color: gray;
+}
+
+#task-input {
+  color: black;
+  background-color: #E4E6E8;
+}
+
+#date-input {
+  background-color: #E4E6E8;
+}/*# sourceMappingURL=light.css.map */

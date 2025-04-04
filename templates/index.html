@@ -6,11 +6,9 @@
 {% block body %}
 <div class="navbar">
     <div class="nav-element-left">
-        <i class="material-icons">timer</i>
     </div>
     <div class="nav-element-right">
-        <i class="material-icons">menu</i>
-        <i class="material-icons">account_circle</i>
+        <i class="material-icons" id="theme-mode" data-light="{{ url_for('static', filename='css/light.css') }}" data-dark="{{ url_for('static', filename='css/dark.css') }}">dark_mode</i>
     </div>
 </div>
 <!-- Main -->
@@ -29,7 +27,7 @@
         <div class="task-list" val>
             {% for task in tasks %}
             <div class="task">
-                <div class="task-text">{{task.content}}</div>
+                <div class="task-text">{{task.taskDate}}  | {{task.content}}</div>
                 
                 <a href="/delete/{{task.id}}">
                     <i class="material-icons">close</i>

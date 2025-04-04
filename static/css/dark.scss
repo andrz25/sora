@@ -1,0 +1,18 @@
+$primary-color: #242424;
+$secondary-color: #171717;
+
+body {
+    background-color: $primary-color;
+}
+
+#calendar {
+    background-color: $secondary-color;
+}
+
+#task-input {
+    background-color: $secondary-color;
+}
+
+#date-input {
+    background-color: $secondary-color;
+}

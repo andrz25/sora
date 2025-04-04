@@ -14,9 +14,8 @@
 .fc .fc-day-today #fc-dom-12 {
     background-color: #1982C4; 
     color: white;               
-    border-radius: 50%;         
-    width: 2rem;
-    height: 2rem;             
+    border-radius: 50%;
+    width: 1.7rem;                
     display: flex;              
     align-items: center;        
     justify-content: center;    

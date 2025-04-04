@@ -5,6 +5,7 @@ $confirm-hover-color: #4DA167;
 $icon-colors: gray;
 
 $tablet: 768px;
+$phone: 425px;
 
 $main-font: 'Roboto', sans;
 
@@ -15,20 +16,27 @@ body {
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
-    background-color: $primary-color;
+
+    @media (max-width: $phone) {
+        overflow-y: scroll;
+    }
+
 }
 
 /* Nav */
 
-.navbar i {
-    font-size: 1.8rem;
-    color: $icon-colors;
-    cursor: pointer;
-    user-select: none;
+.navbar {
+    i {
+       font-size: 1.8rem;
+        color: $icon-colors;
+        cursor: pointer;
+        user-select: none;
 
-    &:hover {
-        animation: jump 0.2s ease-in-out 1 forwards;
+        &:hover {
+            animation: jump 0.2s ease-in-out 1 forwards;
+        } 
     }
+    
 }
 
 @keyframes jump {
@@ -57,20 +65,38 @@ body {
 .main-container {
     display: flex;
     height: calc(100vh - 10vh);
+    
+
+    @media (max-width: $phone) {
+        flex-direction: column;
+        background-color: red;
+    }
 
     #calendar {
         margin: 0 1rem 1rem 1rem;
         padding: 1rem;
         width: 75%;
         border-radius: 1rem;
-        background-color: $secondary-color;
         box-shadow: -0.2rem 0.2rem rgba(255, 255, 255, 0.2);
+
+        @media (max-width: $phone) {
+            padding: 1rem;
+            margin: 0;
+            width: 100%;
+            border-radius: 0;
+            height: 50vh;
+        }
     }
     .tasks-section {
         width: 25%;
         display: flex;
         flex-direction: column;
         margin: 0 1rem 1rem 0;
+
+        @media (max-width: $phone) {
+            display: flex;
+            width: 100%;
+        }
 
         .task-input-field {
             width: auto;
@@ -84,12 +110,15 @@ body {
 
             .input-submit {
                 display: flex;
+                flex-wrap: wrap;
+                @media (max-width: $phone) {
+                    flex-wrap: nowrap;
+                }
 
                 #task-input {
-                    background-color: $secondary-color;
                     padding: 1rem;
+                    width: 3vw;
                     flex-grow: 1;
-                    width: 100%;
                     border: none;
                     border-radius: 1rem 0 0 1rem;
                     outline: none;
@@ -97,6 +126,11 @@ body {
                     
                     @media (max-width: $tablet) {
                         border-radius: 1rem 1rem 0 0;
+                    }
+
+                    @media (max-width: $phone) {
+                        border-radius: 0;
+                        width: 75%;
                     }
                 }
                 
@@ -118,20 +152,30 @@ body {
                         width: 100%;
                         padding: 0.5rem;
                     }
+
+                    @media (max-width: $phone) {
+                        width: 25%;
+                        border-radius: 0;
+                    }
                 }
             }
 
-
-
             #date-input {
+                flex-grow: 1;
                 margin-top: 0.7rem;
-                background-color: $secondary-color;
                 border: none;
                 color: gray;
                 border-radius: 2rem;
 
                 &::-webkit-calendar-picker-indicator {
                     filter: invert(1);
+                }
+
+                @media (max-width: $phone) {
+                    width: 100%;
+                    margin: 0;
+                    border-radius: 0;
+                    height: 1rem;
                 }
             }
             
